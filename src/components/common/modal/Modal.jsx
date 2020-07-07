@@ -13,7 +13,8 @@ const ModalOverlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 99;
 `;
 
@@ -36,18 +37,21 @@ const ModalWrapper = styled.div`
 const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
-  /* background-color: #fff; */
+  background-color: #fff;
   border-radius: 10px;
   min-width: 360px;
-  top: -30%;
-  /* box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5); */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
+  top: 0;
+  transform: translateY(-10%);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(39, 54, 86, 0.16) 0 24px 56px 0;
+  /* box-shadow: rgba(39, 54, 86, 0.16) 0 24px 56px 0; */
+  box-shadow: rgba(39, 54, 86, 0.16) 0 15px 30px 0;
   color: #273656;
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
 `;
 
 const Modal = ({ maskClosable }) => {

@@ -56,3 +56,19 @@ export const BookmarkFullIcon = (props) => (
     />
   </SVG>
 );
+
+export const SearchIcon = (props) => (
+  <SVG {...props}>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M17.319 15.307A8.001 8.001 0 005.343 4.743 8 8 0 0015.908 16.72l.042.045 4.242 4.243a1 1 0 101.415-1.415l-4.243-4.242a.99.99 0 00-.045-.043zm-2.076-9.15a6 6 0 11-8.485 8.486 6 6 0 018.485-8.486z"
+    />
+  </SVG>
+);
+
+export const CloseButtonIcon = (props) => (
+  <SVG {...props}>
+    <path d="M6.226 4.811A1 1 0 104.81 6.226L10.586 12l-5.774 5.775a1 1 0 101.414 1.414L12 13.415l5.775 5.774a1 1 0 001.414-1.414L13.415 12l5.774-5.774a1 1 0 10-1.414-1.415L12 10.586 6.226 4.811z" />
+  </SVG>
+);

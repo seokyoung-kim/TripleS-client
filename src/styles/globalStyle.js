@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export default createGlobalStyle`
   ${reset};
@@ -13,6 +13,7 @@ export default createGlobalStyle`
     min-height: 100%;
     min-width: 360px;
     background-color: #fafafa;
+    width: 100%;
   }
 
   * {

@@ -1,10 +1,92 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
   ImageIcon,
   BookmarkIcon,
   BookmarkFullIcon,
 } from 'components/common/Icons';
+
+const Card = ({
+  // _id,
+  link,
+  image,
+  writer,
+  title,
+  description,
+  tags,
+  date,
+  platform,
+  category,
+  isSaved,
+}) => {
+  const [onMouse, setOnMouse] = useState(false);
+  const [saved, setSaved] = useState(isSaved);
+
+  const openLink = () => {
+    window.open(link, '_blank');
+  };
+
+  const saveCard = () => {
+    setSaved(!saved);
+  };
+
+  const onMouseEnter = () => {
+    setOnMouse(true);
+  };
+
+  const onMouseLeave = () => {
+    setOnMouse(false);
+  };
+
+  return (
+    <Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <ImageWrapper hasImage={image} onClick={openLink}>
+        {image ? (
+          <img src={image} alt="card" />
+        ) : (
+          <ImageIcon size={48} fill="#fff" />
+        )}
+      </ImageWrapper>
+      <Content hover={onMouse} hasImage={image}>
+        <ContentHeader>
+          <PlatFormImageWrapper>
+            <img
+              src="https://api.surfit.io/v1/channel/logo/w6rbw/1x"
+              alt={platform}
+            />
+          </PlatFormImageWrapper>
+          <Writer>{writer}</Writer>
+          <span>{category}</span>
+        </ContentHeader>
+        <ContentBody>
+          <Title onClick={openLink}>{title}</Title>
+          <Description onClick={openLink}>
+            {onMouse
+              ? `${description.slice(0, 360)}...`
+              : `${description.slice(0, 75)}...`}
+          </Description>
+          {onMouse && (
+            <>
+              <Date>{date}</Date>
+              <Platform>`by ${platform}`</Platform>
+            </>
+          )}
+        </ContentBody>
+        <ContentFooter>
+          <Tags>
+            {tags.map((tag) => (
+              <Tag key={tag}>#{tag}</Tag>
+            ))}
+          </Tags>
+          <Bookmark onClick={saveCard}>
+            {saved ? <BookmarkFullIcon /> : <BookmarkIcon fill="#BDBDBD" />}
+          </Bookmark>
+        </ContentFooter>
+      </Content>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   width: ${(props) => props.theme.card.width};
@@ -170,84 +252,21 @@ const Platform = styled.span`
   padding-left: 0.5rem;
 `;
 
-const Card = ({
-  link,
-  image,
-  writer,
-  title,
-  description,
-  tags,
-  date,
-  platform,
-  category,
-  isSaved,
-}) => {
-  const [onMouse, setOnMouse] = useState(false);
-  const [saved, setSaved] = useState(isSaved);
-
-  const openLink = () => {
-    window.open(link, '_blank');
-  };
-
-  const saveCard = () => {
-    setSaved(!saved);
-  };
-
-  const onMouseEnter = () => {
-    setOnMouse(true);
-  };
-
-  const onMouseLeave = () => {
-    setOnMouse(false);
-  };
-
-  return (
-    <Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <ImageWrapper hasImage={image} onClick={openLink}>
-        {image ? (
-          <img src={image} alt="card" />
-        ) : (
-          <ImageIcon size={48} fill="#fff" />
-        )}
-      </ImageWrapper>
-      <Content hover={onMouse} hasImage={image}>
-        <ContentHeader>
-          <PlatFormImageWrapper>
-            <img
-              src="https://api.surfit.io/v1/channel/logo/w6rbw/1x"
-              alt={platform}
-            />
-          </PlatFormImageWrapper>
-          <Writer>{writer}</Writer>
-          <span>{category}</span>
-        </ContentHeader>
-        <ContentBody>
-          <Title onClick={openLink}>{title}</Title>
-          <Description onClick={openLink}>
-            {onMouse
-              ? `${description.slice(0, 360)}...`
-              : `${description.slice(0, 75)}...`}
-          </Description>
-          {onMouse && (
-            <>
-              <Date>{date}</Date>
-              <Platform>by {platform}</Platform>
-            </>
-          )}
-        </ContentBody>
-        <ContentFooter>
-          <Tags>
-            {tags.map((tag) => (
-              <Tag key={tag}>#{tag}</Tag>
-            ))}
-          </Tags>
-          <Bookmark onClick={saveCard}>
-            {saved ? <BookmarkFullIcon /> : <BookmarkIcon fill="#BDBDBD" />}
-          </Bookmark>
-        </ContentFooter>
-      </Content>
-    </Wrapper>
-  );
+Card.propTypes = {
+  writer: PropTypes.string,
+  image: PropTypes.string,
+  isSaved: PropTypes.bool,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      tag: PropTypes.string,
+    }),
+  ),
+  link: PropTypes.string,
+  date: PropTypes.string,
+  platform: PropTypes.string,
+  category: PropTypes.string,
 };
 
 Card.defaultProps = {

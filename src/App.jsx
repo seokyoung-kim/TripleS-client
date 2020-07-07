@@ -7,13 +7,13 @@ import Modal from 'components/common/modal/Modal';
 const App = () => (
   <>
     <Helmet>
-      <title>React App</title>
+      <title>TripleS</title>
     </Helmet>
+    <Modal />
     <Switch>
       <Route path={['/']} component={MainPage} />
       <Redirect from="*" to="/" />
     </Switch>
-    <Modal />
   </>
 );
 
