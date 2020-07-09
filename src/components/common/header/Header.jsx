@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchBar from 'components/common/header/SearchBar';
 import Button from 'components/common/Button';
-// import AuthModal from 'components/auth/AuthModal';
-// import { showModal } from 'redux/modules/ui';
+import AuthModal from 'components/auth/AuthModal';
+import { showModal } from 'redux/modules/ui';
 import Responsive from 'components/layouts/Responsive';
 
 const Wrapper = styled.div`
@@ -36,15 +36,15 @@ const Logo = styled(Link)`
 const RightSection = styled.div``;
 
 const Header = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const onClick = () => {
-  //   dispatch(
-  //     showModal({
-  //       content: <AuthModal />,
-  //     }),
-  //   );
-  // };
+  const onClick = () => {
+    dispatch(
+      showModal({
+        content: <AuthModal />,
+      }),
+    );
+  };
 
   return (
     <Wrapper>
@@ -54,8 +54,7 @@ const Header = () => {
         </Logo>
         <SearchBar />
         <RightSection>
-          <Button>로그인</Button>
-          {/* <Button onClick={onClick}>로그인</Button> */}
+          <Button onClick={onClick}>로그인</Button>
         </RightSection>
       </HeaderContainer>
     </Wrapper>
