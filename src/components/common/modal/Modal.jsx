@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { hideModal } from 'redux/modules/ui';
+
+import { hideModal } from 'redux/uiSlice';
 import Portal from './Portal';
 
 const ModalOverlay = styled.div`

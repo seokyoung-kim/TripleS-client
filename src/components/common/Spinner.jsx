@@ -1,5 +1,7 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+
+import colors from 'styles/colors';
 
 const Spinner = () => (
   <SpinnerWrapper>
@@ -28,7 +30,7 @@ const SpinnerWrapper = styled.div`
 const SpinnerItem = styled.div`
   display: block;
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: ${(props) => props.theme.colors.black[3]};
+  border-left-color: ${colors.black[3]};
   border-radius: 50%;
   width: 32px;
   height: 32px;

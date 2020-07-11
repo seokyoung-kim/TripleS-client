@@ -1,4 +1,4 @@
-import { showModal, hideModal } from 'redux/modules/ui';
+import { showModal, hideModal } from 'redux/uiSlice';
 import store from 'redux/store';
 
 const ui = {

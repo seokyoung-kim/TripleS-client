@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+
 import {
   ImageIcon,
   BookmarkIcon,
   BookmarkFullIcon,
 } from 'components/common/Icons';
+import colors from 'styles/colors';
 
 const Card = ({
   // _id,
@@ -92,7 +94,7 @@ const Wrapper = styled.div`
   width: ${(props) => props.theme.card.width};
   height: ${(props) => props.theme.card.height};
   border-radius: ${(props) => props.theme.card.radius};
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${colors.white};
   box-shadow: ${(props) => props.theme.boxShadow[3]};
   position: relative;
   font-family: 'Noto Sans KR';
@@ -102,7 +104,7 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 15rem;
   border-radius: ${(props) => props.theme.card.radius};
-  background-color: ${(props) => props.theme.colors.bg};
+  background-color: ${colors.bg};
   overflow: hidden;
   cursor: pointer;
 
@@ -127,7 +129,7 @@ const Content = styled.div`
   border-radius: 12px 12px 8px 8px;
   position: absolute;
   bottom: 0;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${colors.white};
   box-shadow: ${(props) => props.theme.boxShadow.upper};
   transition: height 0.2s ease-in;
   overflow: hidden;
@@ -147,7 +149,7 @@ const Content = styled.div`
 `;
 
 const ContentHeader = styled.div`
-  border-bottom: 2px solid ${(props) => props.theme.colors.gray[6]};
+  border-bottom: 2px solid ${colors.gray[6]};
   height: 3rem;
   padding: 0 1rem;
   display: flex;
@@ -155,7 +157,7 @@ const ContentHeader = styled.div`
 
   span {
     font-size: 0.75rem;
-    color: ${(props) => props.theme.colors.gray[4]};
+    color: ${colors.gray[4]};
   }
 `;
 
@@ -203,7 +205,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-size: 0.875rem;
-  color: ${(props) => props.theme.colors.gray[3]};
+  color: ${colors.gray[3]};
   line-height: 1.25rem;
   padding: 0 1rem;
   margin-bottom: 0.5rem;
@@ -218,7 +220,7 @@ const ContentFooter = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${colors.white};
   justify-content: space-between;
 `;
 
@@ -229,7 +231,7 @@ const Tags = styled.div`
   align-items: center;
   font-size: 0.875rem;
   font-weight: 500;
-  color: ${(props) => props.theme.colors.gray[3]};
+  color: ${colors.gray[3]};
 `;
 
 const Tag = styled.p`
@@ -242,13 +244,13 @@ const Tag = styled.p`
 
 const Date = styled.span`
   font-size: 0.75rem;
-  color: ${(props) => props.theme.colors.gray[4]};
+  color: ${colors.gray[4]};
   padding-left: 1rem;
 `;
 
 const Platform = styled.span`
   font-size: 0.75rem;
-  color: ${(props) => props.theme.colors.gray[4]};
+  color: ${colors.gray[4]};
   padding-left: 0.5rem;
 `;
 

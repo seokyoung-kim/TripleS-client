@@ -2,16 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import colors from 'styles/colors';
 import SearchBar from 'components/common/header/SearchBar';
 import Button from 'components/common/Button';
 import AuthModal from 'components/auth/AuthModal';
-import { showModal } from 'redux/modules/ui';
+import { showModal } from 'redux/uiSlice';
 import Responsive from 'components/layouts/Responsive';
 
 const Wrapper = styled.div`
   width: 100%;
   height: 4rem;
-  border-bottom: 1px solid ${(props) => props.theme.colors.secondary[3]};
+  border-bottom: 1px solid ${colors.secondary[3]};
 `;
 
 const HeaderContainer = styled(Responsive)`
