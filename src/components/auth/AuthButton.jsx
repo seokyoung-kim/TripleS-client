@@ -1,5 +1,43 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+
+import { NaverIcon, GoogleIcon } from 'components/common/Icons';
+
+const providerMap = {
+  google: {
+    name: '구글',
+    icon: GoogleIcon,
+  },
+  naver: {
+    name: '네이버',
+    icon: NaverIcon,
+  },
+};
+
+const SocialAuthButton = ({ type, size = 'md', onClick, className }) => {
+  const { icon: Icon, name, color } = providerMap[type];
+
+  return (
+    <Wrapper
+      type={type}
+      size={size}
+      onClick={onClick}
+      className={className}
+      color={color}
+    >
+      <Icon />
+      <div>{`${name} 아이디로 로그인`}</div>
+    </Wrapper>
+  );
+};
+
+SocialAuthButton.propTypes = {
+  type: PropTypes.string,
+  size: PropTypes.string,
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+};
 
 const Wrapper = styled.button`
   border: none;
@@ -16,16 +54,35 @@ const Wrapper = styled.button`
   height: 3.5rem;
   font-family: 'Noto Sans KR';
 
-  img {
-    width: 1.25rem;
-    margin-right: 2.5rem;
+  ${(prop) =>
+    prop.type === 'naver' &&
+    css`
+      background-color: #1ec800;
+      color: white;
+
+      &:hover {
+        background-color: #20c003;
+      }
+    `}
+
+  ${(prop) =>
+    prop.type === 'google' &&
+    css`
+      background-color: #fafafa;
+      color: #17278d;
+      border: 1px solid #dddddd;
+
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    `}
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
-const AuthButton = ({ children, size = 'md', onClick, className }) => (
-  <Wrapper size={size} onClick={onClick} className={className}>
-    {children}
-  </Wrapper>
-);
-
-export default AuthButton;
+export default SocialAuthButton;
