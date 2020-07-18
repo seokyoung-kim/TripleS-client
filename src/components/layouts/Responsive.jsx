@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   padding-left: 2.25rem;
   padding-right: 2.25rem;
-  width: ${(props) => props.theme.width.container};
+  width: 100%;
   margin: 0 auto;
   min-width: 360px;
 

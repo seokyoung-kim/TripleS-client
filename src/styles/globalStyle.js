@@ -5,14 +5,13 @@ export default createGlobalStyle`
   ${reset};
     
   body {
-    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
     min-height: 100%;
-    min-width: 360px;
-    background-color: #fafafa;
+    min-width: 360px; 
+    background-color: #f1f1f1;
     width: 100%;
   }
 
@@ -25,7 +24,7 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
-    height: 100%;
+    min-height: 100%;
   }
 
   a {
