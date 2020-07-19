@@ -14,8 +14,8 @@ const ModalOverlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  /* background-color: rgba(0, 0, 0, 0.6); */
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(255, 255, 255, 0.7); */
   z-index: 99;
 `;
 
@@ -38,7 +38,7 @@ const ModalWrapper = styled.div`
 const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
-  background-color: #fff;
+  background-color: #f1f1f1;
   border-radius: 10px;
   min-width: 360px;
   top: 0;
@@ -62,13 +62,15 @@ const Modal = ({ maskClosable }) => {
   }));
 
   useEffect(() => {
+    if (!modal) return;
     document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
+    // eslint-disable-next-line consistent-return
     return () => {
       const scrollY = document.body.style.top;
       document.body.style.cssText = `position: ""; top: "";`;
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
-  }, []);
+  }, [modal]);
 
   const onClose = () => {
     dispatch(hideModal());

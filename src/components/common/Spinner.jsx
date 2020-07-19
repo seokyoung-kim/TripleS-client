@@ -30,7 +30,7 @@ const SpinnerWrapper = styled.div`
 const SpinnerItem = styled.div`
   display: block;
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: ${colors.black[3]};
+  border-left-color: ${colors.primary[2]};
   border-radius: 50%;
   width: 32px;
   height: 32px;

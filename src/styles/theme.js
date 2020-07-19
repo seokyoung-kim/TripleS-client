@@ -1,7 +1,7 @@
 export default {
   card: {
     width: '20rem',
-    height: '25rem',
+    height: '26rem',
     radius: '0.5rem',
   },
 

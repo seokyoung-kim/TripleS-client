@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
@@ -21,6 +22,8 @@ const Card = ({
   platform,
   category,
   isSaved,
+  logo,
+  type,
 }) => {
   const [onMouse, setOnMouse] = useState(false);
   const [saved, setSaved] = useState(isSaved);
@@ -50,28 +53,25 @@ const Card = ({
           <ImageIcon size={48} fill="#fff" />
         )}
       </ImageWrapper>
-      <Content hover={onMouse} hasImage={image}>
+      <Content hover={onMouse} hasImage={image} type={type}>
         <ContentHeader>
           <PlatFormImageWrapper>
-            <img
-              src="https://api.surfit.io/v1/channel/logo/w6rbw/1x"
-              alt={platform}
-            />
+            <img src={logo} alt={platform} />
           </PlatFormImageWrapper>
           <Writer>{writer}</Writer>
           <span>{category}</span>
         </ContentHeader>
         <ContentBody>
-          <Title onClick={openLink}>{title}</Title>
+          <Title onClick={openLink}>
+            {onMouse ? `${title.slice(0, 100)}` : title}
+          </Title>
           <Description onClick={openLink}>
-            {onMouse
-              ? `${description.slice(0, 360)}...`
-              : `${description.slice(0, 75)}...`}
+            {onMouse ? `${description.slice(0, 400)}...` : description}
           </Description>
           {onMouse && (
             <>
               <Date>{date}</Date>
-              <Platform>`by ${platform}`</Platform>
+              <Platform>{`by ${platform}`}</Platform>
             </>
           )}
         </ContentBody>
@@ -110,7 +110,7 @@ const ImageWrapper = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   svg {
     align-self: flex-start;
@@ -125,7 +125,7 @@ const ImageWrapper = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  height: 19rem;
+  height: ${(props) => (props.hasImage ? '12rem' : '19rem')} ;
   border-radius: 12px 12px 8px 8px;
   position: absolute;
   bottom: 0;
@@ -135,17 +135,26 @@ const Content = styled.div`
   overflow: hidden;
 
   ${(props) =>
-    props.hasImage &&
+    props.type === 2 &&
     css`
-      height: 12rem;
+      height: 15rem;
     `}
 
+  ${(props) =>
+    props.type === 3 &&
+    css`
+      height: 19rem;
+    `}
+
+    
   ${(props) =>
     props.hover &&
     css`
       height: 100%;
       border-radius: 0.5rem;
+      box-shadow: none;
     `}
+
 `;
 
 const ContentHeader = styled.div`
@@ -172,11 +181,12 @@ const PlatFormImageWrapper = styled.div`
   cursor: pointer;
 
   img {
+    width: 100%;
   }
 `;
 
 const Writer = styled.h5`
-  margin-left: 0.75rem;
+  margin-left: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
   padding-bottom: 2px;
@@ -201,6 +211,7 @@ const Title = styled.div`
   width: 100%;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  line-height: 1.5;
 `;
 
 const Description = styled.div`
@@ -210,7 +221,7 @@ const Description = styled.div`
   padding: 0 1rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
-  text-align: justify;
+  /* text-align: justify; */
 `;
 
 const ContentFooter = styled.div`
@@ -230,12 +241,12 @@ const Tags = styled.div`
   height: 100%;
   align-items: center;
   font-size: 0.875rem;
-  font-weight: 500;
   color: ${colors.gray[3]};
 `;
 
 const Tag = styled.p`
   cursor: pointer;
+  font-size: 0.75rem;
 
   & + & {
     margin-left: 0.5rem;

@@ -12,8 +12,17 @@ import Responsive from 'components/layouts/Responsive';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 4rem;
-  border-bottom: 1px solid ${colors.secondary[3]};
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  background-color: #f1f1f1;
+  z-index: 99;
+  /* border-bottom: 1px solid ${colors.secondary[3]}; */
+`;
+
+const Spacer = styled.div`
+  width: 100%;
+  height: 5rem;
 `;
 
 const HeaderContainer = styled(Responsive)`
@@ -27,7 +36,7 @@ const HeaderContainer = styled(Responsive)`
 `;
 
 const Logo = styled(Link)`
-  height: 1.5rem;
+  height: 1.75rem;
   cursor: pointer;
 
   img {
@@ -49,17 +58,20 @@ const Header = () => {
   };
 
   return (
-    <Wrapper>
-      <HeaderContainer>
-        <Logo to="/">
-          <img src={require('assets/images/logo.png')} alt="" />
-        </Logo>
-        <SearchBar />
-        <RightSection>
-          <Button onClick={onClick}>로그인</Button>
-        </RightSection>
-      </HeaderContainer>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <HeaderContainer>
+          <Logo to="/">
+            <img src={require('assets/images/logo.png')} alt="" />
+          </Logo>
+          <SearchBar />
+          <RightSection>
+            <Button onClick={onClick}>로그인</Button>
+          </RightSection>
+        </HeaderContainer>
+      </Wrapper>
+      <Spacer />
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Card from 'components/card/Card';
+import NewCard from 'components/card/NewCard';
 
 const CardContainer = ({
   card: {
@@ -20,7 +20,7 @@ const CardContainer = ({
   },
 }) => {
   return (
-    <Card
+    <NewCard
       _id={_id}
       link={link}
       image={image}
