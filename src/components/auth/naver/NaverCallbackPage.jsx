@@ -24,6 +24,7 @@ const naverLoginCallback = (history, dispatch) => {
       localStorage.setItem('user', JSON.stringify(user));
 
       // 실제로는 서버에서 token을 받아왔을 경우에만 로그인 처리
+
       dispatch(logUserIn({ user }));
 
       history.push('/');

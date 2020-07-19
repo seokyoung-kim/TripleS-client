@@ -8,20 +8,14 @@ const Wrapper = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background-color: ${colors.bg};
-  border-radius: 0.5rem;
+  background-color: #f1f1f1;
+  border-radius: 1rem;
   height: 2.5rem;
   width: 42rem;
   display: flex;
   align-items: center;
-  border: 1px solid transparent;
 
-  ${(props) =>
-    props.selected &&
-    css`
-      backgrouncolors.white};
-      border: 1px solid ${colors.secondary[3]};
-    `}
+  box-shadow: 2px 2px 12px #fff, inset 4px 4px 16px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1200px) {
     display: none;
@@ -40,7 +34,7 @@ const SearchIconWrapper = styled.div`
     ${(props) =>
       props.selected &&
       css`
-  colors.primary[2]};
+        fill: ${colors.secondary[2]};
       `}
   }
 `;
@@ -55,7 +49,8 @@ const SearchForm = styled.form`
     width: 100%;
     height: 1.5rem;
     font-size: 0.875rem;
-    background-color: ${colors.bg};
+    /* background-color: ${colors.bg}; */
+    background-color: transparent;
     margin-right: 1rem;
     border: 0;
     outline: 0;
@@ -65,13 +60,14 @@ const SearchForm = styled.form`
     }
 
     &:focus {
-      background-color: ${colors.white};
+    background-color: transparent;
+      /* background-color: ${colors.white}; */
     }
 
     ${(props) =>
       props.selected &&
       css`
-        backgrouncolors.white};
+        background-color: #f1f1f1;
       `}
   }
 `;
