@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-// import * as authApi from 'lib/api/auth';
+import * as authApi from 'api/auth';
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -40,17 +38,20 @@ export const {
 } = usersSlice.actions;
 export default usersSlice.reducer;
 
-export const logUserIn = (user) => async (dispatch) => {
+export const logUserIn = ({ token, provider }) => async (dispatch) => {
   try {
     // TODO: 서버에 소셜 로그인 요청
-    const accessToken = await axios.post('/api/v1/auth/social/naver', {
-      user,
-    });
+    if (provider === 'naver') {
+      const user = await authApi.naverLogin({ token });
+      localStorage.setItem('user', user);
+      dispatch(loginSuccess({ user }));
+    }
 
-    // 발급 받은 토큰을 헤더에 바로 고정 시킴 - token을 localStorage, cookie 등에 저장하지 않기 위한 방법
-    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
-    dispatch(loginSuccess({ user }));
+    if (provider === 'google') {
+      const user = await authApi.googleLogin({ token });
+      localStorage.setItem('user', user);
+      dispatch(loginSuccess({ user }));
+    }
   } catch (err) {
     console.log(err);
     dispatch(loginFailure(err));
