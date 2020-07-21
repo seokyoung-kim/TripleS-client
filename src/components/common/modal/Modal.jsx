@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { hideModal } from 'redux/uiSlice';
+import colors from 'styles/colors';
 import Portal from './Portal';
 
 const ModalOverlay = styled.div`
@@ -38,7 +39,7 @@ const ModalWrapper = styled.div`
 const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
-  background-color: #f1f1f1;
+  background-color: ${colors.bg};
   border-radius: 10px;
   min-width: 360px;
   top: 0;

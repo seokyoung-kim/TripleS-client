@@ -8,14 +8,14 @@ const Wrapper = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #f1f1f1;
+  background-color: ${colors.bg};
   border-radius: 1rem;
   height: 2.5rem;
   width: 42rem;
   display: flex;
   align-items: center;
 
-  box-shadow: 2px 2px 12px #fff, inset 4px 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 5px 5px 10px #cecece, inset -5px -5px 10px #ffffff;
 
   @media (max-width: 1200px) {
     display: none;
@@ -34,7 +34,7 @@ const SearchIconWrapper = styled.div`
     ${(props) =>
       props.selected &&
       css`
-        fill: ${colors.secondary[2]};
+        fill: ${colors.primary[2]};
       `}
   }
 `;

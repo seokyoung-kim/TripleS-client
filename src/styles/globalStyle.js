@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import colors from './colors';
 
 export default createGlobalStyle`
   ${reset};
@@ -11,7 +12,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     min-height: 100%;
     min-width: 360px; 
-    background-color: #f1f1f1;
+    background-color: ${colors.bg};
     width: 100%;
   }
 

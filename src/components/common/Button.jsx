@@ -5,39 +5,35 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 
 const Wrapper = styled.button`
-  background-color: transparent;
+  background: linear-gradient(145deg, #f1f1f1, #eee);
   border: none;
-  color: ${colors.secondary[2]};
-  border-radius: 1rem; 
+  color: ${colors.primary[1]};
+  border-radius: 1rem;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
-  padding: 0;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25), -3px -3px 6px #fff;
 
-  > div {
-    width: 100%;  
-    transition: all 0.1s;
-    height: 2rem;
-    padding: 1.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-  border-radius: 1rem; 
-    box-shadow: -3px -3px 6px #fff;
+  width: 100%;
+  transition: all 0.1s;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: linear-gradient(145deg, #ddd, #ffffff);
   }
 
-  /* &:hover {
-    text-shadow: 0 0 0.01px ${colors.primary[2]},
-      0 0 0.01px ${colors.primary[2]};
-    border: 1px solid ${colors.primary[2]};
-    color: ${colors.primary[2]};
-  } */
+  &:active {
+    box-shadow: inset 5px 5px 10px #cecece, inset -5px -5px 10px #ffffff;
+    background: transparent;
+  }
 `;
 
 const Button = ({ children, size, onClick, className }) => (
   <Wrapper size={size} onClick={onClick} className={className}>
-    <div>{children}</div>
+    {children}
   </Wrapper>
 );
 

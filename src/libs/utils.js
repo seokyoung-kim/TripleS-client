@@ -129,7 +129,6 @@ export const mapCardList = (cardList) => {
   const newCardList = cardList.map((card) => {
     const logo = platformMap[card.platform].icon;
     const { imgWidth, imgHeight } = getImageSize(card.image);
-    console.log(imgWidth, imgHeight);
 
     const cardType = defineCardType(imgWidth, imgHeight, card.title);
 

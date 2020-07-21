@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CardList from 'components/card/CardList';
-import NewCardList from 'components/card/NewCardList';
 
 import { fetchCardList } from 'redux/cardsSlice';
 import { mapCardList } from 'libs/utils';
@@ -33,7 +32,6 @@ const CardListContainer = () => {
 
   return (
     <>
-      <NewCardList cards={mappedCardList} isLoading={isLoading} />
       <CardList cards={mappedCardList} isLoading={isLoading} />
     </>
   );
