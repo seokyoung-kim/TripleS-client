@@ -8,10 +8,11 @@ import { setUser } from 'redux/usersSlice';
 
 // components
 import Modal from 'components/common/modal/Modal';
+import ScrollToTop from 'components/common/ScrollToTop';
 
 // pages
 import MainPage from 'pages/MainPage';
-import NaverCallbackPage from 'components/auth/naver/NaverCallbackPage';
+import AuthPage from 'pages/AuthPage';
 
 function loadUser() {
   try {
@@ -33,8 +34,9 @@ const App = () => {
         <title>TripleS</title>
       </Helmet>
       <Modal />
+      <ScrollToTop />
       <Switch>
-        <Route path="/login/callback" component={NaverCallbackPage} />
+        <Route path="/login" component={AuthPage} />
         <Route exact path={['/']} component={MainPage} />
         <Redirect from="*" to="/" />
       </Switch>
