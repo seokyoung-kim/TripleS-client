@@ -41,7 +41,9 @@ export default cardsSlice.reducer;
 export const fetchCardList = () => async (dispatch) => {
   try {
     dispatch(getCardListStart());
-    const { data } = await axios.get('http://localhost:4000/cards');
+    const { data } = await axios.get('http://localhost:8080/cards');
+    // const data = await axios.get('http://localhost:8080/api/v1/cards');
+    console.log(data);
     dispatch(getCardListSuccess(data));
   } catch (err) {
     console.log(err);

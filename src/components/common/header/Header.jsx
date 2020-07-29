@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import colors from 'styles/colors';
 import SearchBar from 'components/common/header/SearchBar';
 import Button from 'components/common/Button';
-import AuthModal from 'components/auth/AuthModal';
-import { showModal } from 'redux/uiSlice';
 import Responsive from 'components/layouts/Responsive';
 
 const Wrapper = styled.div`
@@ -26,7 +23,7 @@ const Spacer = styled.div`
 `;
 
 const HeaderContainer = styled(Responsive)`
-  max-width: 1728px;
+  max-width: 1800px;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -47,16 +44,6 @@ const Logo = styled(Link)`
 const RightSection = styled.div``;
 
 const Header = () => {
-  const dispatch = useDispatch();
-
-  const onClick = () => {
-    dispatch(
-      showModal({
-        content: <AuthModal />,
-      }),
-    );
-  };
-
   return (
     <>
       <Wrapper>
@@ -66,7 +53,7 @@ const Header = () => {
           </Logo>
           <SearchBar />
           <RightSection>
-            <Button onClick={onClick}>로그인</Button>
+            <Button to="/login">로그인</Button>
           </RightSection>
         </HeaderContainer>
       </Wrapper>

@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Responsive from 'components/layouts/Responsive';
 import CardContainer from 'containers/card/CardContainer';
 import Spinner from 'components/common/Spinner';
 
-const ResponsiveWrapper = styled(Responsive)`
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+const ResponsiveWrapper = styled.div`
   min-height: 100vh;
   margin-top: 1rem;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const Grid = styled.div`
+  padding: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, 21rem);
   /* grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); */
@@ -39,7 +39,11 @@ const CardList = ({ cards, isLoading }) => {
 
   return (
     <ResponsiveWrapper>
-      <Grid>{cards && cards.map((card) => <CardContainer card={card} />)}</Grid>
+      <Grid>
+        {cards &&
+          cards[0] &&
+          cards.map((card) => <CardContainer card={card} />)}
+      </Grid>
     </ResponsiveWrapper>
   );
 };

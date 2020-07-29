@@ -3,26 +3,25 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding-left: 2.25rem;
-  padding-right: 2.25rem;
   width: 100%;
   margin: 0 auto;
   min-width: 360px;
 
-  @media (max-width: 1200px) {
-    width: 816px;
+  @media (max-width: 1903px) {
+    width: 1440px;
   }
 
-  @media (max-width: 816px) {
-    width: 552px;
-    padding-left: 0rem;
-    padding-right: 0rem;
+  @media (max-width: 1535px) {
+    width: 1072px;
   }
 
-  @media (max-width: 552px) {
+  @media (max-width: 1167px) {
+    width: 704px;
+  }
+
+  @media (max-width: 799px) {
     width: 100%;
-    padding-left: 0rem;
-    padding-right: 0rem;
+    padding: 0 3rem;
   }
 `;
 

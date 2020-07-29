@@ -23,23 +23,22 @@ export const platformMap = {
   },
 };
 
-const getImageSize = (src) => {
-  const img = new Image();
-  img.src = src;
+// const getImageSize = (src) => {
+//   const img = new Image();
+//   img.src = src;
 
-  const imgWidth = img.width;
-  const imgHeight = img.height;
+//   const imgWidth = img.width;
+//   const imgHeight = img.height;
 
-  return { imgWidth, imgHeight };
-};
+//   return { imgWidth, imgHeight };
+// };
 
-const defineCardType = (imgWidth, imgHeight) => {
-  const ratio = imgWidth / imgHeight;
-
+const defineCardType = (ratio) => {
   let type;
-  if (!imgWidth) {
+  if (!ratio) {
     type = 3;
   }
+
   // 사진 크게
   if (ratio < 1.33) {
     type = 1;
@@ -128,9 +127,9 @@ const getShortenDescription = (text, cardType) => {
 export const mapCardList = (cardList) => {
   const newCardList = cardList.map((card) => {
     const logo = platformMap[card.platform].icon;
-    const { imgWidth, imgHeight } = getImageSize(card.image);
+    // const { imgWidth, imgHeight } = getImageSize(card.image);
 
-    const cardType = defineCardType(imgWidth, imgHeight, card.title);
+    const cardType = defineCardType(card.ratio, card.title);
 
     const shortenTitle = getShortenTitle(card.title, cardType);
     const shortenDescription = getShortenDescription(
