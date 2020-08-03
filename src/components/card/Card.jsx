@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { HeartEmptyIcon, HeartFullIcon } from 'components/common/Icons';
+import { HeartFullIcon } from 'components/common/Icons';
 import colors from 'styles/colors';
 
 const Card = ({
@@ -54,7 +54,7 @@ const Card = ({
               {saved ? (
                 <HeartFullIcon fill={colors.primary[2]} size={13} />
               ) : (
-                <HeartEmptyIcon fill={colors.secondary[2]} size={13} />
+                <HeartFullIcon fill={colors.gray[4]} size={13} />
               )}{' '}
             </LikeContainer>
           </HeaderRight>
@@ -68,7 +68,7 @@ const Card = ({
           <ImageWrapper type={type} hover={onMouse}>
             <div hover={onMouse}>
               <ImageShadow hover={onMouse} />
-              {type !== 3 && <img src={image} alt="card" />}
+              {type !== 3 && <img src={image} hover={onMouse} alt="card" />}
             </div>
           </ImageWrapper>
           <ContentBody>
@@ -192,6 +192,11 @@ const ImageWrapper = styled.div`
   height: ${(props) => (props.type === 1 ? '15rem' : '11rem')};
   height: ${(props) => props.type === 3 && '0'};
 
+  &:active {
+    transform: translateY(0px);
+    box-shadow: none;
+  }
+
   ${(props) =>
     props.hover &&
     css`
@@ -209,6 +214,11 @@ const ImageWrapper = styled.div`
     align-items: center;
     transition: all 0.4s;
 
+    &:active {
+      box-shadow: none;
+      transform: scale(1);
+    }
+
     ${(props) =>
       props.hover &&
       css`
@@ -223,7 +233,7 @@ const ImageWrapper = styled.div`
     img {
       border-radius: 0.5rem;
       width: 100%;
-      transition: all 0.4s;
+      transition: all 0.3s;
     }
   }
 `;
@@ -267,6 +277,8 @@ const Description = styled.div`
   color: ${colors.gray[3]};
   line-height: 1.25rem;
   padding: 0 0.5rem;
+  overflow: hidden;
+  max-height: 6.5rem;
 `;
 
 const ContentFooter = styled.div`
@@ -338,4 +350,4 @@ Card.defaultProps = {
   category: 'category',
 };
 
-export default Card;
+export default React.memo(Card);

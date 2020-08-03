@@ -23,38 +23,37 @@ export const platformMap = {
   },
 };
 
-const getImageSize = (src) => {
-  const img = new Image();
-  img.src = src;
+// const getImageSize = (src) => {
+//   const img = new Image();
+//   img.src = src;
 
-  const imgWidth = img.width;
-  const imgHeight = img.height;
+//   const imgWidth = img.width;
+//   const imgHeight = img.height;
 
-  return { imgWidth, imgHeight };
-};
+//   return { imgWidth, imgHeight };
+// };
 
-const defineCardType = (imgWidth, imgHeight) => {
-  const ratio = imgWidth / imgHeight;
+// const defineCardType = (ratio) => {
+//   let type;
+//   if (!ratio) {
+//     type = 3;
+//   }
 
-  let type;
-  if (!imgWidth) {
-    type = 3;
-  }
-  // 사진 크게
-  if (ratio < 1.33) {
-    type = 1;
-  }
-  // 사진 작게
-  if (ratio >= 1.33) {
-    type = 2;
-  }
-  // 사진 없음
-  if (ratio > 1.82) {
-    type = 3;
-  }
+//   // 사진 크게
+//   if (ratio < 1.33) {
+//     type = 1;
+//   }
+//   // 사진 작게
+//   if (ratio >= 1.33) {
+//     type = 2;
+//   }
+//   // 사진 없음
+//   if (ratio > 1.82) {
+//     type = 3;
+//   }
 
-  return type;
-};
+//   return type;
+// };
 
 const getShortenTitle = (text, cardType) => {
   let length = 0;
@@ -86,6 +85,7 @@ const getShortenTitle = (text, cardType) => {
   return `${shortenText}...`;
 };
 
+// eslint-disable-next-line consistent-return
 const getShortenDescription = (text, cardType) => {
   let length = 0;
   let realLength = 0;
@@ -104,39 +104,64 @@ const getShortenDescription = (text, cardType) => {
     textLength = 300;
   }
 
-  const strArr = Array.from(text);
+  if (text) {
+    const strArr = Array.from(text);
 
-  strArr.forEach((s) => {
-    if (length < textLength) {
-      if (escape(s.charAt(s)).length === 6) {
+    strArr.forEach((s) => {
+      if (length < textLength) {
+        if (escape(s.charAt(s)).length === 6) {
+          length += 1;
+        }
         length += 1;
+        realLength += 1;
       }
-      length += 1;
-      realLength += 1;
+    });
+    const shortenText = text.slice(0, realLength);
+
+    if (text === shortenText) {
+      return text;
     }
-  });
 
-  const shortenText = text.slice(0, realLength);
-
-  if (text === shortenText) {
-    return text;
+    return `${shortenText}...`;
   }
-
-  return `${shortenText}...`;
 };
 
 export const mapCardList = (cardList) => {
   const newCardList = cardList.map((card) => {
-    const logo = platformMap[card.platform].icon;
-    const { imgWidth, imgHeight } = getImageSize(card.image);
+    let logo;
+    if (card.platform) {
+      logo = platformMap[card.platform].icon;
+    }
+    if (!card.platform) {
+      logo = platformMap.festa.icon;
+    }
+    // const { imgWidth, imgHeight } = getImageSize(card.image);
 
-    const cardType = defineCardType(imgWidth, imgHeight, card.title);
+    // const ratio = imgWidth / imgHeight;
 
-    const shortenTitle = getShortenTitle(card.title, cardType);
-    const shortenDescription = getShortenDescription(
-      card.description,
-      cardType,
-    );
+    // const cardType = defineCardType(ratio, card.title);
+    let cardType = 2;
+
+    if (!card.description) {
+      cardType = 1;
+    }
+
+    if (card.image === 'None') {
+      cardType = 3;
+    }
+
+    let shortenTitle = getShortenTitle(card.title, cardType);
+    // const shortenTitle = getShortenTitle(card.title, cardType);
+
+    let shortenDescription;
+    if (card.description) {
+      // shortenDescription = getShortenDescription(card.description, cardType);
+      shortenDescription = getShortenDescription(card.description, cardType);
+    }
+    if (!card.description) {
+      shortenDescription = '';
+      shortenTitle = card.title;
+    }
 
     const newCard = {
       ...card,

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
   box-shadow: inset 5px 5px 10px #cecece, inset -5px -5px 10px #ffffff;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1511px) {
     display: none;
   }
 `;

@@ -11,7 +11,8 @@
       "date": "2020년 7월 2일",
       "platform": "velog",
       "category": "CS",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.7"
     },
     {
       "_id": "2",
@@ -24,7 +25,8 @@
       "date": "2020년 6월 5일",
       "platform": "velog",
       "category": "web",
-      "isSaved": true
+      "isSaved": true,
+      "ratio": "1.7"
     },
     {
       "_id": "3",
@@ -37,7 +39,8 @@
       "date": "2020년 7월 2일",
       "platform": "velog",
       "category": "web",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.33"
     },
     {
       "_id": "4",
@@ -50,7 +53,8 @@
       "date": "2020년 3월 1일",
       "platform": "brunch",
       "category": "java",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.51"
     },
     {
       "_id": "5",
@@ -63,7 +67,8 @@
       "date": "2020년 7월 15일",
       "platform": "brunch",
       "category": "UX",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "2.16"
     },
     {
       "_id": "6",
@@ -76,7 +81,8 @@
       "date": "2020년 7월 13일",
       "platform": "brunch",
       "category": "AI",
-      "isSaved": true
+      "isSaved": true,
+      "ratio": "2"
     },
     {
       "_id": "7",
@@ -89,7 +95,8 @@
       "date": "2019년 11월 29일",
       "platform": "medium",
       "category": "javascript",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.5"
     },
     {
       "_id": "8",
@@ -102,7 +109,8 @@
       "date": "2020년 7월 13일",
       "platform": "medium",
       "category": "프로그래밍",
-      "isSaved": true
+      "isSaved": true,
+      "ratio": "1.53"
     },
     {
       "_id": "9",
@@ -115,7 +123,8 @@
       "date": "2019년 2월 13일",
       "platform": "medium",
       "category": "Typescript",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.78"
     },
     {
       "_id": "10",
@@ -128,7 +137,8 @@
       "date": "2020년 7월 28일",
       "platform": "festa",
       "category": "Event",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "0.35"
     },
     {
       "_id": "11",
@@ -141,7 +151,8 @@
       "date": "2020년 7월 25일",
       "platform": "festa",
       "category": "Event",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "2.73"
     },
     {
       "_id": "12",
@@ -154,7 +165,8 @@
       "date": "2020년 7월 16일",
       "platform": "festa",
       "category": "Event",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.61"
     },
     {
       "_id": "13",
@@ -167,7 +179,8 @@
       "date": "2020년 4월 25일",
       "platform": "d2",
       "category": "python",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.45"
     },
     {
       "_id": "14",
@@ -180,7 +193,8 @@
       "date": "2020년 7월 17일",
       "platform": "d2",
       "category": "AI",
-      "isSaved": true
+      "isSaved": true,
+      "ratio": "1.27"
     },
     {
       "_id": "15",
@@ -193,7 +207,8 @@
       "date": "2020년 6월 19일",
       "platform": "d2",
       "category": "web",
-      "isSaved": false
+      "isSaved": false,
+      "ratio": "1.4"
     }
   ]
 }

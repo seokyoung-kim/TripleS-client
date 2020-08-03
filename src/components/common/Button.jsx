@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 import colors from 'styles/colors';
 
-const Wrapper = styled.button`
+const buttonStyle = css`
   background: linear-gradient(145deg, #f1f1f1, #eee);
   border: none;
   color: ${colors.primary[1]};
@@ -31,17 +32,33 @@ const Wrapper = styled.button`
   }
 `;
 
-const Button = ({ children, size, onClick, className }) => (
-  <Wrapper size={size} onClick={onClick} className={className}>
-    {children}
-  </Wrapper>
-);
+const StyledButton = styled.button`
+  ${buttonStyle}
+`;
+
+const StyledLink = styled(Link)`
+  ${buttonStyle}
+  padding: 0.75rem 1.25rem;
+`;
+
+const Button = ({ children, size, onClick, className, to }) => {
+  return to ? (
+    <StyledLink to={to} className={className}>
+      {children}
+    </StyledLink>
+  ) : (
+    <StyledButton size={size} onClick={onClick} className={className}>
+      {children}
+    </StyledButton>
+  );
+};
 
 Button.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   onClick: PropTypes.func,
   className: PropTypes.string,
+  to: PropTypes.string,
 };
 
 Button.defaultProps = {

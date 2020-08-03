@@ -1,5 +1,6 @@
 export default {
   bg: '#f2f2f2',
+  bg2: '#F7FAFC',
   black: '#000000',
   white: '#ffffff',
   primary: {
