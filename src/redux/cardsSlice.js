@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-// import * as authApi from 'lib/api/';
+import { getCard } from 'api/cards';
 
 const startLoading = (state) => {
   state.isLoading = true;
@@ -41,8 +39,7 @@ export default cardsSlice.reducer;
 export const fetchCardList = () => async (dispatch) => {
   try {
     dispatch(getCardListStart());
-    const { data } = await axios.get('http://localhost:8080/cards');
-    // const data = await axios.get('http://localhost:8080/api/v1/cards');
+    const { data } = await getCard();
     console.log(data);
     dispatch(getCardListSuccess(data));
   } catch (err) {

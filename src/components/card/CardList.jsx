@@ -53,4 +53,4 @@ CardList.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default CardList;
+export default React.memo(CardList);
