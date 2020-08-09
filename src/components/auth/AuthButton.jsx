@@ -17,16 +17,16 @@ const providerMap = {
   },
 };
 
-const SocialAuthButton = ({ provider, currentPath }) => {
+const SocialAuthButton = ({ provider }) => {
   const info = providerMap[provider];
   const { icon, name, color } = info;
 
-  const host =
-    process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_API_HOST
-      : 'http://localhost:8080';
+  // const host =
+  //   process.env.NODE_ENV === 'production'
+  //     ? 'https://triples-app.herokuapp.com'
+  //     : 'http://localhost:8080';
 
-  const redirectTo = `${host}/api/v1/auth/social/redirect/${provider}?next=${currentPath}`;
+  const redirectTo = `https://triples-app.herokuapp.com/oauth2/authorization/${provider}`;
 
   return (
     <Wrapper provider={provider} color={color} href={redirectTo}>

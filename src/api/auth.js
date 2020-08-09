@@ -11,3 +11,5 @@ export const naverLogout = () => apiClient.post('/api/auth/naver/logout');
 export const googleLogout = () => apiClient.post('/api/auth/google/logout');
 
 export const check = () => apiClient.get('/api/auth/check');
+
+export const verify = () => apiClient.get('/api/v1/auth/verify');

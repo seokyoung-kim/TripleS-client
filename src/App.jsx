@@ -13,6 +13,7 @@ import ScrollToTop from 'components/common/ScrollToTop';
 // pages
 import MainPage from 'pages/MainPage';
 import AuthPage from 'pages/AuthPage';
+import LoginCheckPage from './pages/LoginCheckPage';
 
 function loadUser() {
   try {
@@ -36,6 +37,7 @@ const App = () => {
       <Modal />
       <ScrollToTop />
       <Switch>
+        <Route path="/check" component={LoginCheckPage} />
         <Route path="/login" component={AuthPage} />
         <Route exact path={['/']} component={MainPage} />
         <Redirect from="*" to="/" />

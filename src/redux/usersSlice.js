@@ -4,8 +4,10 @@ import * as authApi from 'api/auth';
 export const usersSlice = createSlice({
   name: 'users',
   initialState: {
-    user: null,
     isLoggedIn: false,
+    auth: null,
+    user: null,
+    loading: null,
     error: null,
   },
   reducers: {
@@ -25,6 +27,22 @@ export const usersSlice = createSlice({
       state.user = null;
       state.error = null;
     },
+    verifyStart(state) {
+      state.loading = true;
+      state.authError = null;
+    },
+    verifySuccess(state, { payload: user }) {
+      state.isLoggedIn = true;
+      state.user = user;
+      state.loading = false;
+      state.authError = null;
+    },
+    verifyFailure(state, { payload: error }) {
+      state.isLoggedIn = false;
+      state.user = null;
+      state.loading = false;
+      state.authError = error;
+    },
   },
 });
 
@@ -35,6 +53,9 @@ export const {
   setUser,
   tempSetUser,
   check,
+  verifyStart,
+  verifySuccess,
+  verifyFailure,
 } = usersSlice.actions;
 export default usersSlice.reducer;
 
@@ -65,3 +86,20 @@ export const logUserIn = ({ token, provider }) => async (dispatch) => {
 //   localStorage.removeItem('user');
 //   dispatch(logout());
 // };
+
+export const verifyUser = () => async (dispatch) => {
+  console.log('verify user');
+  try {
+    dispatch(verifyStart());
+    const user = await authApi.verify();
+    dispatch(verifySuccess(user.data));
+  } catch (err) {
+    try {
+      localStorage.removeItem('user');
+    } catch (e) {
+      console.log('localStorage is not working');
+    }
+
+    dispatch(verifyFailure(err));
+  }
+};
