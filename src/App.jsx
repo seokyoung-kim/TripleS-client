@@ -13,7 +13,8 @@ import ScrollToTop from 'components/common/ScrollToTop';
 // pages
 import MainPage from 'pages/MainPage';
 import AuthPage from 'pages/AuthPage';
-import LoginCheckPage from './pages/LoginCheckPage';
+import LoginCheckPage from 'pages/LoginCheckPage';
+import SignupPage from 'pages/SignupPage';
 
 function loadUser() {
   try {
@@ -38,6 +39,7 @@ const App = () => {
       <ScrollToTop />
       <Switch>
         <Route path="/check" component={LoginCheckPage} />
+        <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={AuthPage} />
         <Route exact path={['/']} component={MainPage} />
         <Redirect from="*" to="/" />

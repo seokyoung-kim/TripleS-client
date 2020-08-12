@@ -38,7 +38,7 @@ const SocialAuthButton = ({ provider }) => {
 
 SocialAuthButton.propTypes = {
   provider: PropTypes.string,
-  currentPath: PropTypes.string,
+  // currentPath: PropTypes.string,
 };
 
 const Wrapper = styled.a`
