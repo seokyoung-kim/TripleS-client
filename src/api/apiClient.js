@@ -7,7 +7,7 @@ const host =
 
 const apiClient = axios.create({
   baseURL: host,
-  withCredentials: false,
+  withCredentials: true,
 });
 
 export default apiClient;
