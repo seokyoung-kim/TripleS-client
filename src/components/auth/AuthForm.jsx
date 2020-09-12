@@ -5,8 +5,16 @@ import { Link } from 'react-router-dom';
 import Responsive from 'components/layouts/Responsive';
 import AuthButton from 'components/auth/AuthButton';
 import colors from 'styles/colors';
+import { googleLogin } from 'redux/usersSlice';
+import { useDispatch } from 'react-redux';
 
 const AuthForm = () => {
+  const dispatch = useDispatch();
+
+  const login = () => {
+    dispatch(googleLogin());
+  };
+
   return (
     <Fixed>
       <Wrapper>
@@ -16,6 +24,7 @@ const AuthForm = () => {
         <AuthButtons>
           <AuthButton provider="google" />
           <AuthButton provider="naver" />
+          <button onClick={login}>구글 로그인</button>
         </AuthButtons>
         <Back to="/">돌아가기</Back>
       </Wrapper>

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { HeartFullIcon } from 'components/common/Icons';
 import colors from 'styles/colors';
@@ -20,6 +21,7 @@ const Card = ({
   logo,
   type,
 }) => {
+  const history = useHistory();
   const [onMouse, setOnMouse] = useState(false);
   const [saved, setSaved] = useState(isSaved);
 
@@ -39,15 +41,23 @@ const Card = ({
     setOnMouse(false);
   };
 
+  const openPlatformPage = () => {
+    history.push(`/cards/platform/${platform}`);
+  };
+
+  const openWriterPage = () => {
+    history.push(`/cards/writer/${writer}`);
+  };
+
   return (
     <Shadow>
       <Wrapper>
         <ContentHeader type={type}>
           <HeaderLeft>
-            <PlatFormImageWrapper>
+            <PlatFormImageWrapper onClick={openPlatformPage}>
               <img src={logo} alt={platform} />
             </PlatFormImageWrapper>
-            <Writer>{writer}</Writer>
+            <Writer onClick={openWriterPage}>{writer}</Writer>
           </HeaderLeft>
           <HeaderRight onClick={saveCard}>
             <LikeContainer saved={saved}>
@@ -80,7 +90,7 @@ const Card = ({
         <ContentFooter>
           <DateAndPlatform>
             <Date>{date}</Date>
-            <Platform>{`by ${platform}`}</Platform>
+            <Platform onClick={openPlatformPage}>{`by ${platform}`}</Platform>
           </DateAndPlatform>
           <Category>{category}</Category>
         </ContentFooter>
@@ -151,7 +161,7 @@ const Writer = styled.h5`
   color: ${colors.gray[2]};
 
   &:hover {
-    color:#601AAF;
+    color: #601aaf;
     /* color: ${colors.primary[2]}; */
   }
 `;

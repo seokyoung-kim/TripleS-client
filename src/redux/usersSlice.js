@@ -59,23 +59,25 @@ export const {
 } = usersSlice.actions;
 export default usersSlice.reducer;
 
-export const logUserIn = ({ token, provider }) => async (dispatch) => {
+export const googleLogin = () => async (dispatch) => {
+  console.log('dd');
   try {
+    const user = await authApi.googleLogin();
+    console.log(user);
     // TODO: 서버에 소셜 로그인 요청
-    if (provider === 'naver') {
-      const user = await authApi.naverLogin({ token });
-      localStorage.setItem('user', user);
-      dispatch(loginSuccess({ user }));
-    }
+    // if (provider === 'naver') {
+    //   localStorage.setItem('user', user);
+    //   dispatch(loginSuccess({ user }));
+    // }
 
-    if (provider === 'google') {
-      const user = await authApi.googleLogin({ token });
-      localStorage.setItem('user', user);
-      dispatch(loginSuccess({ user }));
-    }
+    // if (provider === 'google') {
+    //   const user = await authApi.googleLogin();
+    //   localStorage.setItem('user', user);
+    //   dispatch(loginSuccess({ user }));
+    // }
   } catch (err) {
     console.log(err);
-    dispatch(loginFailure(err));
+    // dispatch(loginFailure(err));
   }
 };
 
