@@ -26,6 +26,7 @@ const Wrapper = styled.div``;
 
 const PageTitle = styled(Responsive)`
   margin-top: 3rem;
+  max-width: 1800px;
 
   h1 {
     font-weight: 600;
