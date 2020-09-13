@@ -13,10 +13,12 @@ import ScrollToTop from 'components/common/ScrollToTop';
 // pages
 import MainPage from 'pages/MainPage';
 import AuthPage from 'pages/AuthPage';
+import MailPage from 'pages/MailPage';
 import LoginCheckPage from 'pages/LoginCheckPage';
 import SignupPage from 'pages/SignupPage';
 import PlatformsPage from 'pages/PlatformsPage';
 import WritersPage from 'pages/WritersPage';
+
 
 function loadUser() {
   try {
@@ -43,6 +45,7 @@ const App = () => {
         <Route path="/check" component={LoginCheckPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={AuthPage} />
+        <Route path="/mail" component={MailPage} />
         <Route path="/cards/platform/:platform" component={PlatformsPage} />
         <Route path="/cards/writer/:writer" component={WritersPage} />
         <Route exact path={['/']} component={MainPage} />
