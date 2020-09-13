@@ -6,68 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-
-// const IOSSwitch = withStyles((theme) => ({
-//   root: {
-//     width: 42,
-//     height: 26,
-//     padding: 0,
-//     margin: theme.spacing(1),
-//   },
-//   switchBase: {
-//     padding: 1,
-//     '&$checked': {
-//       transform: 'translateX(16px)',
-//       color: theme.palette.common.white,
-//       '& + $track': {
-//         backgroundColor: '#7300f5',
-//         opacity: 1,
-//         border: 'none',
-//       },
-//     },
-//     '&$focusVisible $thumb': {
-//       color: '#7300f5',
-//       border: '6px solid #fff',
-//     },
-//   },
-//   thumb: {
-//     width: 24,
-//     height: 24,
-//   },
-//   track: {
-//     borderRadius: 26 / 2,
-//     border: `1px solid ${theme.palette.grey[400]}`,
-//     backgroundColor: theme.palette.grey[50],
-//     opacity: 1,
-//     transition: theme.transitions.create(['background-color', 'border']),
-//   },
-//   checked: {},
-//   focusVisible: {},
-// }))(({ classes, ...props }) => {
-//   return (
-//     <Switch
-//       focusVisibleClassName={classes.focusVisible}
-//       disableRipple
-//       classes={{
-//         root: classes.root,
-//         switchBase: classes.switchBase,
-//         thumb: classes.thumb,
-//         track: classes.track,
-//         checked: classes.checked,
-//       }}
-//       {...props}
-//     />
-//   );
-// });
-
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -77,6 +16,12 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+  },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '35ch',
+    },
   },
 }));
 
@@ -90,7 +35,7 @@ const Wrapper = styled.div`
 
 const Box = styled.div`
   width: 800px;
-  height: 440px;
+  height: 540px;
   background-color: white;
   border-radius: 20px;
   margin: 60px;
@@ -129,7 +74,21 @@ const MailCycleText = styled.div`
 `;
 
 const MailCycleDetailText = styled.div`
-  width: 400px;
+  width: 800px;
+  height: 18px;
+  margin: 5px 20px 20px 20px;
+  font-size: 14px;
+  color: #a4a4a4;
+`;
+const InterestingText = styled.div`
+  width: 80px;
+  height: 20px;
+  margin: 60px 20px 5px 20px;
+  font-size: 16px;
+`;
+
+const InterestingDetailText = styled.div`
+  width: 800px;
   height: 18px;
   margin: 5px 20px 20px 20px;
   font-size: 14px;
@@ -137,15 +96,23 @@ const MailCycleDetailText = styled.div`
 `;
 
 const FormButtonContainer = styled.div`
-  margin: 10px;
+  /* margin: 10px; */
   width: 700px;
   height: 50px;
   display: flex;
   justify-content: center;
 `;
 
+const TextFieldContainer = styled.div`
+    width: 800px;
+  height: 18px;
+  /* margin: 5px 20px 20px 20px; */
+  display: flex;
+  justify-content: center;
+`
+
 const SubmitButtonContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -190,16 +157,6 @@ const MailForm = () => {
   const handleOpen = () => {
     setOpen(true);
   };
-
-//   const [state, setState] = React.useState({
-//     checkedA: true,
-//     checkedB: true,
-//     checkedC: true,
-//   });
-
-//   const handleChangeSwitch = (event) => {
-//     setState({ ...state, [event.target.name]: event.target.checked });
-//   };
 
   return (
     <Wrapper>
@@ -268,6 +225,17 @@ const MailForm = () => {
             </Select>
           </FormControl>
         </FormButtonContainer>
+<>
+        <InterestingText>관심 분야</InterestingText>
+        <InterestingDetailText>
+          구독을 원하는 관심 분야를 입력해 주세요. 입력하신 내용과 관련된 포스트를 메일링해드립니다.
+        </InterestingDetailText>
+        </>
+        <TextFieldContainer>
+        <form className={classes.root} noValidate autoComplete="off">
+        <TextField id="standard-basic" label="ex) 스프링부트, 리액트" />
+        </form>
+        </TextFieldContainer>
         <SubmitButtonContainer>
           <SubmitButton>저장</SubmitButton>
         </SubmitButtonContainer>
