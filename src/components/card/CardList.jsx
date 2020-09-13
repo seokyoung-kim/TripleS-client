@@ -42,7 +42,7 @@ const CardList = ({ cards, isLoading }) => {
       <Grid>
         {cards &&
           cards[0] &&
-          cards.map((card) => <CardContainer card={card} />)}
+          cards.map((card) => <CardContainer key={card.id} card={card} />)}
       </Grid>
     </ResponsiveWrapper>
   );

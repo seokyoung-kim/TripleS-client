@@ -5,7 +5,7 @@ import cardsReducer from './cardsSlice';
 
 const rootReducer = combineReducers({
   ui: uiReducer,
-  user: usersReducer,
+  users: usersReducer,
   cards: cardsReducer,
 });
 

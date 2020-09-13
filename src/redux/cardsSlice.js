@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCard } from 'api/cards';
+import { getCard, getCardPlatform, getCardWriter } from 'api/cards';
 
 const startLoading = (state) => {
   state.isLoading = true;
@@ -41,7 +41,31 @@ export const fetchCardList = () => async (dispatch) => {
     dispatch(getCardListStart());
     const { data } = await getCard();
     console.log(data);
-    dispatch(getCardListSuccess(data));
+    dispatch(getCardListSuccess(data.slice(0, 300)));
+  } catch (err) {
+    console.log(err);
+    dispatch(getCardListFailure(err.toString()));
+  }
+};
+
+export const fetchPlatformCardList = ({ platform }) => async (dispatch) => {
+  try {
+    dispatch(getCardListStart());
+    const { data } = await getCardPlatform({ platform });
+    console.log(data);
+    dispatch(getCardListSuccess(data.slice(0, 50)));
+  } catch (err) {
+    console.log(err);
+    dispatch(getCardListFailure(err.toString()));
+  }
+};
+
+export const fetchWriterCardList = ({ writer }) => async (dispatch) => {
+  try {
+    dispatch(getCardListStart());
+    const { data } = await getCardWriter({ writer });
+    console.log(data);
+    dispatch(getCardListSuccess(data.slice(0, 50)));
   } catch (err) {
     console.log(err);
     dispatch(getCardListFailure(err.toString()));
