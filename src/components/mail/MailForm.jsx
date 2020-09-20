@@ -1,29 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    display: 'block',
-    marginTop: theme.spacing(2),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '35ch',
-    },
-  },
-}));
 
 const Wrapper = styled.div`
   margin: 0;
@@ -35,7 +11,7 @@ const Wrapper = styled.div`
 
 const Box = styled.div`
   width: 800px;
-  height: 540px;
+  height: 560px;
   background-color: white;
   border-radius: 20px;
   margin: 60px;
@@ -96,20 +72,17 @@ const InterestingDetailText = styled.div`
 `;
 
 const FormButtonContainer = styled.div`
-  /* margin: 10px; */
-  width: 700px;
-  height: 50px;
+  width: 100%;
+  height: 40px;
   display: flex;
   justify-content: center;
 `;
 
-const TextFieldContainer = styled.div`
-    width: 800px;
-  height: 18px;
-  /* margin: 5px 20px 20px 20px; */
+const FormButtonBox = styled.div`
+  width: 300px;
   display: flex;
-  justify-content: center;
-`
+  justify-content: space-between;
+`;
 
 const SubmitButtonContainer = styled.div`
   margin-top: 80px;
@@ -137,25 +110,42 @@ const SubmitButton = styled.button`
   }
 `;
 
+const FormSelect = styled.select`
+  width: 90px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const FormOption = styled.option``;
+
+const TextFieldContainer = styled.div`
+  width: 800px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+`;
+
+const InterestInput = styled.input`
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid black;
+`;
+
 const MailForm = () => {
-  const classes = useStyles();
-  const [week, setWeek] = React.useState('');
-  const [day, setDay] = React.useState('');
-  const [time, setTime] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+  const [weekState, setWeekState] = useState('주');
+  const [dayState, setDayState] = useState('요일');
+  const [timeState, setTimeState] = useState('시간');
 
-  const handleChange = (event) => {
-    setWeek(event.target.value);
-    setDay(event.target.value);
-    setTime(event.target.value);
+  const onWeekChange = (e) => {
+    setWeekState(e.target.value);
   };
-
-  const handleClose = () => {
-    setOpen(false);
+  const onDayChange = (e) => {
+    setDayState(e.target.value);
   };
-
-  const handleOpen = () => {
-    setOpen(true);
+  const onTimeChange = (e) => {
+    setTimeState(e.target.value);
   };
 
   return (
@@ -163,78 +153,42 @@ const MailForm = () => {
       <Box>
         <MailText>메일링 서비스</MailText>
         <DivideLine />
-          <SwitchText>구독 메일 발송</SwitchText>
-          {/* <FormControlLabel
-            control={
-              <IOSSwitch
-                checked={state.checkedB}
-                onChange={handleChangeSwitch}
-                name="checkedB"
-              />
-            }
-          /> */}
+        <SwitchText>구독 메일 발송</SwitchText>
         <MailCycleText>발송 주기</MailCycleText>
         <MailCycleDetailText>
           설정한 주기마다 구독하신 메일을 발송해 드립니다.
         </MailCycleDetailText>
 
         <FormButtonContainer>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-controlled-open-select-label">주</InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              open={open}
-              onClose={handleClose}
-              onOpen={handleOpen}
-              value={week}
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>매주</MenuItem>
-              <MenuItem value={20}>격주</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-controlled-open-select-label">요일</InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              open={open}
-              onClose={handleClose}
-              onOpen={handleOpen}
-              value={day}
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>월요일</MenuItem>
-              <MenuItem value={20}>화요일</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-controlled-open-select-label">시간</InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              open={open}
-              onClose={handleClose}
-              onOpen={handleOpen}
-              value={time}
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>7AM</MenuItem>
-              <MenuItem value={20}>7PM</MenuItem>
-            </Select>
-          </FormControl>
+          <FormButtonBox>
+            <FormSelect value={weekState} onChange={onWeekChange}>
+              <FormOption value={'everyWeek'}>매주</FormOption>
+              <FormOption value={'everyOtherWeek'}>격주</FormOption>
+            </FormSelect>
+            <FormSelect value={dayState} onChange={onDayChange}>
+              <FormOption value={'monday'}>월요일</FormOption>
+              <FormOption value={'tuesday'}>화요일</FormOption>
+              <FormOption value={'wednesday'}>수요일</FormOption>
+              <FormOption value={'thursday'}>목요일</FormOption>
+              <FormOption value={'friday'}>금요일</FormOption>
+              <FormOption value={'saturday'}>토요일</FormOption>
+              <FormOption value={'sunday'}>일요일</FormOption>
+            </FormSelect>
+            <FormSelect value={timeState} onChange={onTimeChange}>
+              <FormOption value={'sevenAM'}>오전 7시</FormOption>
+              <FormOption value={'sevenPM'}>오후 7시</FormOption>
+            </FormSelect>
+          </FormButtonBox>
         </FormButtonContainer>
-<>
-        <InterestingText>관심 분야</InterestingText>
-        <InterestingDetailText>
-          구독을 원하는 관심 분야를 입력해 주세요. 입력하신 내용과 관련된 포스트를 메일링해드립니다.
-        </InterestingDetailText>
+        <>
+          <InterestingText>관심 분야</InterestingText>
+          <InterestingDetailText>
+            구독을 원하는 관심 분야를 입력해 주세요. 입력하신 내용과 관련된
+            포스트를 메일링해드립니다.
+          </InterestingDetailText>
         </>
         <TextFieldContainer>
-        <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="standard-basic" label="ex) 스프링부트, 리액트" />
-        </form>
+          <InterestInput placeholder="ex) 스프링부트, 리액트" />
         </TextFieldContainer>
         <SubmitButtonContainer>
           <SubmitButton>저장</SubmitButton>
