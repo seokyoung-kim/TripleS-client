@@ -24,7 +24,6 @@ const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 8rem;
 `;
 
 const SpinnerItem = styled.div`
