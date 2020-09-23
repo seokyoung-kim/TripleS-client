@@ -10,4 +10,8 @@ const apiClient = axios.create({
   withCredentials: false,
 });
 
+setInterval(function () {
+  apiClient.get('/api/v1/cards');
+}, 1200000);
+
 export default apiClient;
