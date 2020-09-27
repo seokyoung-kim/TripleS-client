@@ -1,6 +1,13 @@
 import apiClient from './apiClient';
 
-export const getCard = () => apiClient.get('/api/v1/cards');
+export const getCard = async (next) => {
+  if (next) {
+    const data = await apiClient.get(`/api/v1/cards?next=${next}`);
+    console.log('==>', data);
+    return data;
+  }
+  return await apiClient.get('/api/v1/cards');
+};
 
 export const getCardPlatform = ({ platform }) =>
   apiClient.get(`/api/v1/cards/platform/${platform}`);

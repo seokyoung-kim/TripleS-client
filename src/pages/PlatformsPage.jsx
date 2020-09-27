@@ -25,6 +25,7 @@ export default PlatformsPage;
 const Wrapper = styled.div``;
 
 const PageTitle = styled(Responsive)`
+  max-width: 1800px;
   margin-top: 3rem;
 
   h1 {
